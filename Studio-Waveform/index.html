@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDIO WAVEFORM | Creator's Toolkit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🎛️ STUDIO WAVEFORM</h1>
+            <p class="subtitle">The Creator's Toolkit — Synths, DJ Gear & Visual Software for Electronic Music</p>
+            <p class="personal-tag">🎧 My Personal Catalog: From Bedroom Producer to Festival Stage</p>
+        </div>
+    </header>
+
+    <!-- Filter Controls Section -->
+    <section class="controls">
+        <div class="search-container full-width">
+            <input type="text" id="search-input" placeholder="🔍 Search by name, creator, artist, or feature... (try 'EDM', 'Free', 'Serum', 'James Hype')">
+        </div>
+        
+        <div class="filter-group">
+            <div class="filter-item">
+                <label>📱 Type</label>
+                <select id="type-filter">
+                    <option value="All">All Types</option>
+                    <option value="Software">💿 Software</option>
+                    <option value="Hardware">🎹 Hardware</option>
+                </select>
+            </div>
+            
+            <div class="filter-item">
+                <label>🎛️ Category</label>
+                <select id="category-filter">
+                    <option value="All">All Categories</option>
+                    <!-- Populated by JavaScript -->
+                </select>
+            </div>
+            
+            <div class="filter-item">
+                <label>📊 Skill Level</label>
+                <select id="skill-filter">
+                    <option value="All">All Levels</option>
+                    <option value="Beginner-Friendly">🌱 Beginner</option>
+                    <option value="All Levels">📚 All Levels</option>
+                    <option value="Intermediate">⚡ Intermediate</option>
+                    <option value="Advanced">🔥 Advanced</option>
+                    <option value="Professional">👑 Professional</option>
+                </select>
+            </div>
+            
+            <div class="filter-item">
+                <label>💰 Budget</label>
+                <select id="price-filter">
+                    <option value="All">Any Price</option>
+                    <option value="Free">🆓 Free</option>
+                    <option value="$">$ Budget</option>
+                    <option value="$$">$$ Value</option>
+                    <option value="$$$">$$$ Premium</option>
+                    <option value="$$$$">$$$$ Pro</option>
+                    <option value="$$$$$">$$$$$ Flagship</option>
+                </select>
+            </div>
+            
+            <div class="filter-item">
+                <label>🔄 Sort By</label>
+                <select id="sort-select">
+                    <option value="default">⭐ Featured (My Favorites)</option>
+                    <option value="name-asc">📛 Name (A-Z)</option>
+                    <option value="name-desc">📛 Name (Z-A)</option>
+                    <option value="price-asc">💰 Price (Free First)</option>
+                    <option value="price-desc">💎 Price (Flagship First)</option>
+                    <option value="skill">🌱 Skill (Beginner First)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Action Bar for CRUD Operations -->
+        <div class="action-bar">
+            <button id="add-tool-btn" class="action-btn primary">➕ Add New Tool</button>
+            <button id="save-storage-btn" class="action-btn">💾 Save to Browser</button>
+            <button id="load-storage-btn" class="action-btn">📂 Load from Browser</button>
+            <button id="export-data-btn" class="action-btn">📤 Export JSON</button>
+            <button id="reset-default-btn" class="action-btn secondary">🔄 Reset Default</button>
+        </div>
+        
+        <div class="results-count" id="results-count"></div>
+    </section>
+
+    <!-- Catalog Grid -->
+    <main id="catalog-container" class="catalog-grid">
+        <!-- Cards populated by JavaScript -->
+    </main>
+
+    <footer>
+        <p>🎵 Built for Snap Engineering Academy | Data: Curated from personal production experience & industry standards</p>
+        <p class="footer-note">Ableton • Logic Pro • Pro Tools • Pioneer DJ • Adobe • Arturia • Universal Audio</p>
+    </footer>
+
+    <!-- Add/Edit Tool Modal -->
+    <div id="tool-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Add New Tool</h2>
+            <form id="tool-form">
+                <input type="hidden" id="tool-id">
+                
+                <div class="form-group">
+                    <label for="tool-name">Tool Name *</label>
+                    <input type="text" id="tool-name" required placeholder="e.g., Serum">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tool-category">Category *</label>
+                        <select id="tool-category" required>
+                            <option value="">Select Category</option>
+                            <option value="DAW">DAW</option>
+                            <option value="VST Synth">VST Synth</option>
+                            <option value="Effect Plugin">Effect Plugin</option>
+                            <option value="VST Instrument Suite">VST Instrument Suite</option>
+                            <option value="MIDI Controller">MIDI Controller</option>
+                            <option value="Audio Interface">Audio Interface</option>
+                            <option value="Instrument">Instrument</option>
+                            <option value="DJ Controller">DJ Controller</option>
+                            <option value="DJ System">DJ System</option>
+                            <option value="Media Player">Media Player</option>
+                            <option value="DJ Mixer">DJ Mixer</option>
+                            <option value="Video Editing">Video Editing</option>
+                            <option value="Motion Graphics">Motion Graphics</option>
+                            <option value="Image Editing">Image Editing</option>
+                            <option value="Vector Graphics">Vector Graphics</option>
+                            <option value="Content Creation">Content Creation</option>
+                            <option value="Visual Programming">Visual Programming</option>
+                            <option value="Camera">Camera</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tool-type">Type *</label>
+                        <select id="tool-type" required>
+                            <option value="">Select Type</option>
+                            <option value="Software">Software</option>
+                            <option value="Hardware">Hardware</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-creator">Creator/Brand *</label>
+                    <input type="text" id="tool-creator" required placeholder="e.g., Xfer Records">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-description">Description *</label>
+                    <textarea id="tool-description" rows="3" required placeholder="Brief description of the tool..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tool-skill">Skill Level *</label>
+                        <select id="tool-skill" required>
+                            <option value="">Select Level</option>
+                            <option value="Beginner-Friendly">Beginner-Friendly</option>
+                            <option value="All Levels">All Levels</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="Professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tool-price">Price Tier *</label>
+                        <select id="tool-price" required>
+                            <option value="">Select Tier</option>
+                            <option value="Free">Free</option>
+                            <option value="$">$</option>
+                            <option value="$$">$$</option>
+                            <option value="$$$">$$$</option>
+                            <option value="$$$$">$$$$</option>
+                            <option value="$$$$$">$$$$$</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-price-numeric">Price (Numeric in USD)</label>
+                    <input type="number" id="tool-price-numeric" placeholder="e.g., 189" step="0.01" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-artists">Artists Who Use This (comma separated)</label>
+                    <input type="text" id="tool-artists" placeholder="e.g., Skrillex, Martin Garrix, Flume">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-personal-note">Personal Note</label>
+                    <input type="text" id="tool-personal-note" placeholder="e.g., My desert island synth">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-tags">Tags (comma separated) *</label>
+                    <input type="text" id="tool-tags" required placeholder="e.g., EDM, Sound Design, Bass Music">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-visual-potential">Content/Visual Angle *</label>
+                    <input type="text" id="tool-visual-potential" required placeholder="e.g., Great for YouTube tutorials">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tool-image-url">Image URL</label>
+                    <input type="url" id="tool-image-url" placeholder="https://images.pexels.com/...">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="document.getElementById('tool-modal').style.display='none'">Cancel</button>
+                    <button type="submit" class="save-btn">Save Tool</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
